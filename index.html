@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f5ef">
+    <title>Fieldnotes - AI Engineering Basics</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <!-- The course menu lives on the left. -->
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#top" aria-label="Fieldnotes home">
+          <span class="brand-mark">f.</span>
+          <span>fieldnotes<span class="brand-dot">.</span></span>
+        </a>
+
+        <div class="sidebar-label">YOUR LEARNING DESK</div>
+        <a class="nav-link active" href="#top">
+          <span class="nav-icon">01</span>
+          Overview
+        </a>
+        <a class="nav-link" href="#lessons">
+          <span class="nav-icon">02</span>
+          lessons
+          <span class="nav-count">7</span>
+        </a>
+        <a class="nav-link" href="#resources">
+          <span class="nav-icon">03</span>
+          Files and notes
+        </a>
+
+        <div class="side-course">
+          <div class="side-course-kicker">CURRENT COURSE</div>
+          <div class="side-course-title">AI Engineering<br>Basics</div>
+          <div class="side-course-meta">
+            <span class="tiny-dot"></span>
+            V1 - Batch 01
+          </div>
+          <div class="side-progress">
+            <span id="sideProgressBar"></span>
+          </div>
+          <div class="side-progress-label">
+            <span id="sideProgressText">0% done</span>
+            <span>1 hr</span>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="note-card">
+            <span class="note-spark">Note</span>
+            <p>Small steps count.<br>Take this at your pace.</p>
+          </div>
+          <div class="profile">
+            <div class="avatar">Y</div>
+            <div>
+              <strong>Your desk</strong>
+              <span>Learning in progress</span>
+            </div>
+            <span class="profile-dots">More</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main course content starts here. -->
+      <main class="main-content" id="top">
+        <header class="topbar">
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            menu          </button>
+          <div class="breadcrumb">
+            Courses <span>/</span> AI Engineering Basics          </div>
+          <div class="topbar-right">
+            <span class="today-label">YOUR STUDY SPACE</span>
+            <div class="top-avatar">Y</div>
+          </div>
+        </header>
+
+        <div class="page-wrap">
+          <!-- A quick welcome and an easy place to start. -->
+          <section class="welcome-row">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                YOUR FIRST COURSE
+              </div>
+              <h1>AI Engineering<br><em>Basics</em></h1>
+              <p class="intro">
+                A friendly first look at building with AI. No big words, note                secret handshake. Just the useful bits, one small step at A                time.
+              </p>
+              <div class="welcome-actions">
+                <button class="button button-dark" id="startButton">
+                  Pick up where I left off
+                  <span>Go</span>
+                </button>
+                <span class="quiet-meta">About 1 hour | Beginner friendly</span>
+              </div>
+            </div>
+
+            <div class="hero-art" aria-label="Illustration of a notebook and a little plant" role="img">
+              <div class="art-sun"></div>
+              <div class="art-leaf leaf-one"></div>
+              <div class="art-leaf leaf-two"></div>
+              <div class="art-stem"></div>
+              <div class="art-book">
+                <div class="book-spine"></div>
+                <div class="book-lines">
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
+                <span>learn by<br>making</span>
+              </div>
+              <div class="art-caption">A good place to begin</div>
+            </div>
+          </section>
+
+          <!-- Finish lessons to move the progress bar along. -->
+          <section class="progress-strip" aria-label="Course progress">
+            <div class="progress-heading">
+              <span class="progress-icon">Progress</span>
+              <div>
+                <strong>A little progress is still progress.</strong>
+                <span>Finish a lesson to see your bar move.</span>
+              </div>
+            </div>
+            <div class="progress-visual">
+              <div class="progress-numbers">
+                <span id="progressPercent">0%</span>
+                <span id="progressCount">0 of 7 lessons</span>
+              </div>
+              <div class="progress-track">
+                <span id="progressBar"></span>
+              </div>
+            </div>
+          </section>
+
+          <!-- The lesson rows are added here by app.js. -->
+          <section class="section-block" id="lessons">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">THE PLAN</div>
+                <h2>One hour, <em>well spent.</em></h2>
+              </div>
+              <span class="section-side-note">Go in order, or wander a little.</span>
+            </div>
+            <div class="lesson-layout">
+              <div class="lesson-list" id="lessonList"></div>
+              <aside class="course-note">
+                <div class="note-label">BEFORE YOU DIVE IN</div>
+                <p>
+                  You don't need to know how to code to get something out of                  this. Curiosity is plenty.
+                </p>
+                <div class="note-rule"></div>
+                <div class="note-detail">
+                  <span class="detail-icon">Tip</span>
+                  <div>
+                    <strong>Keep it low pressure</strong>
+                    <small>Pause, take notes, come back later.</small>
+                  </div>
+                </div>
+                <div class="note-detail">
+                  <span class="detail-icon">Try</span>
+                  <div>
+                    <strong>Try the tiny exercise</strong>
+                    <small>It makes the ideas stick.</small>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </section>
+
+          <!-- These are the small files that go with this batch. -->
+          <section class="section-block resource-section" id="resources">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">TAKE THESE WITH YOU</div>
+                <h2>Files and <em>field notes.</em></h2>
+              </div>
+              <span class="section-side-note">Small, useful, yours to keep.</span>
+            </div>
+            <div class="resource-grid">
+              <a class="resource-card" href="files/ai-flow-cheatsheet.txt" download>
+                <span class="file-icon peach">TXT</span>
+                <span class="resource-copy">
+                  <strong>The AI app, in a nutshell</strong>
+                  <small>A one-page flow cheat sheet</small>
+                </span>
+                <span class="download-arrow">Download</span>
+              </a>
+              <a class="resource-card" href="files/prompt-playground.md" download>
+                <span class="file-icon green">MD</span>
+                <span class="resource-copy">
+                  <strong>Prompt playground</strong>
+                  <small>A tiny exercise to try out</small>
+                </span>
+                <span class="download-arrow">Download</span>
+              </a>
+              <a class="resource-card" href="files/batch-01-notes.md" download>
+                <span class="file-icon blue">MD</span>
+                <span class="resource-copy">
+                  <strong>Batch 01 notes</strong>
+                  <small>Key ideas, in plain English</small>
+                </span>
+                <span class="download-arrow">Download</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- Notes stay in this browser; they are not shared. -->
+          <section class="section-block comments-section" id="comments">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">LEAVE A LITTLE NOTE</div>
+                <h2>Questions, thoughts, <em>aha moments.</em></h2>
+              </div>
+            </div>
+            <div class="comment-box">
+              <div class="comment-avatar">Y</div>
+              <div class="comment-form">
+                <label class="sr-only" for="commentInput">
+                  Write a comment or Questions                </label>
+                <textarea id="commentInput" rows="2" placeholder="Something click? Something still fuzzy? Leave yourself a note..."></textarea>
+                <div class="comment-controls">
+                  <span>Just for you on this device.</span>
+                  <button class="button button-dark button-small" id="postComment">
+                    Leave a note                    <span>Post</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="commentList" class="comment-list"></div>
+          </section>
+
+          <footer class="footer">
+            <span class="footer-mark">f.</span>
+            <span>Made for curious people, not perfect people.</span>
+            <a href="#top">Back to top</a>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <!-- Picking a lesson opens this little reading window. -->
+    <div class="lesson-overlay" id="lessonOverlay" aria-hidden="true">
+      <div class="lesson-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+        <button class="dialog-close" id="closeLesson" aria-label="Close lesson">
+          Close        </button>
+        <div class="dialog-kicker" id="dialogKicker">LESSON 01 - 5 MIN</div>
+        <h2 id="dialogTitle">Welcome to the course</h2>
+        <div class="dialog-body" id="dialogBody"></div>
+        <div class="dialog-footer">
+          <span id="dialogIndex"></span>
+          <button class="button button-dark" id="completeLesson">
+            Mark this one done
+            <span>Done</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The buttons and saved progress are handled in app.js. -->
+    <script src="app.js"></script>
+  </body>
+</html>

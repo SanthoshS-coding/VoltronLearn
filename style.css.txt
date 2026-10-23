@@ -556,3 +556,321 @@ a {
   border-radius: 6px;
   background: #eeeee6;
 }
+
+.progress-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 30px;
+  border-radius: 20px;
+  background: #dde5d8;
+  color: #5d765d;
+  font-size: 8px;
+}
+
+.progress-heading strong,
+.progress-heading div span {
+  display: block;
+}
+
+.progress-heading strong {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.progress-heading div span {
+  margin-top: 4px;
+  color: #858980;
+  font-size: 9px;
+}
+
+.progress-visual {
+  width: 39%;
+  min-width: 170px;
+}
+
+.progress-numbers {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.progress-numbers span:first-child {
+  color: #536c53;
+  font-family: var(--serif);
+  font-size: 16px;
+}
+
+.progress-numbers span:last-child {
+  color: #8d9186;
+  font-size: 9px;
+}
+
+.section-block {
+  margin-top: 48px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  margin: 7px 0 0;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+}
+
+.section-side-note {
+  padding-bottom: 4px;
+  color: #92948a;
+  font-family: var(--serif);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.lesson-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 20px;
+}
+
+.lesson-list {
+  border-top: 1px solid var(--line);
+}
+
+.lesson-row {
+  display: grid;
+  grid-template-columns: 35px minmax(0, 1fr) auto 18px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 9px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--sans);
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.lesson-row:hover {
+  background: #f0eee7;
+}
+
+.lesson-number {
+  color: #9ba092;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.lesson-row.completed .lesson-number {
+  color: #5d795b;
+}
+
+.lesson-copy strong,
+.lesson-copy span {
+  display: block;
+}
+
+.lesson-copy strong {
+  font-size: 11px;
+}
+
+.lesson-copy span {
+  margin-top: 4px;
+  color: #8c9086;
+  font-size: 9px;
+}
+
+.lesson-duration {
+  color: #92968b;
+  font-size: 9px;
+}
+
+.lesson-chevron {
+  color: #9ca092;
+  font-size: 16px;
+}
+
+.lesson-row.completed .lesson-copy strong::after {
+  content: "  done";
+  color: #6c8967;
+  font-size: 9px;
+}
+
+.course-note {
+  padding: 17px 16px;
+  border-radius: 5px;
+  background: #eeeee6;
+}
+
+.note-label {
+  color: #7d8478;
+  font-size: 8px;
+}
+
+.course-note > p {
+  margin: 14px 0;
+  color: #515c50;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.note-rule {
+  height: 1px;
+  margin: 15px 0;
+  background: #dcddd3;
+}
+
+.note-detail {
+  display: flex;
+  gap: 9px;
+  margin: 12px 0;
+}
+
+.detail-icon {
+  width: 20px;
+  color: #768b71;
+  font-size: 9px;
+}
+
+.note-detail strong,
+.note-detail small {
+  display: block;
+}
+
+.note-detail strong {
+  font-size: 9px;
+}
+
+.note-detail small {
+  margin-top: 4px;
+  color: #8a8e83;
+  font-size: 8px;
+  line-height: 1.4;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.resource-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 75px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--panel);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-2px);
+  border-color: #b5c0ae;
+}
+
+.file-icon {
+  display: grid;
+  flex: 0 0 30px;
+  place-items: center;
+  width: 30px;
+  height: 34px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+.file-icon.peach {
+  background: #f3e5d9;
+  color: #9d6e4c;
+}
+
+.file-icon.green {
+  background: #e5ebdf;
+  color: #577052;
+}
+
+.file-icon.blue {
+  background: #e4e9eb;
+  color: #637681;
+}
+
+.resource-copy {
+  min-width: 0;
+}
+
+.resource-copy strong,
+.resource-copy small {
+  display: block;
+}
+
+.resource-copy strong {
+  font-size: 9px;
+}
+
+.resource-copy small {
+  margin-top: 5px;
+  color: #8c9087;
+  font-size: 8px;
+}
+
+.download-arrow {
+  margin-left: auto;
+  color: #737d6e;
+  font-size: 8px;
+}
+
+.comment-box {
+  display: flex;
+  gap: 11px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--panel);
+}
+
+.comment-avatar {
+  width: 27px;
+  height: 27px;
+  font-size: 10px;
+}
+
+.comment-form {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-form textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  resize: vertical;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.6;
+}

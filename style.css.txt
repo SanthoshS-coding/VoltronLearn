@@ -1190,4 +1190,48 @@ a {
 
   .course-note {
     display: none;
-}}
+}  
+
+  .lesson-row {
+    grid-template-columns: 30px minmax(0, 1fr) auto 18px;
+    gap: 7px;
+    padding: 12px 4px;
+}
+
+  .resource-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
+  .resource-card {
+    gap: 7px;
+    padding: 9px;
+}
+
+  .resource-copy strong {
+    font-size: 8px;
+}
+
+  .resource-copy small {
+    font-size: 7px;
+}
+
+  .download-arrow {
+    font-size: 7px;
+}
+
+  .lesson-dialog {
+    padding: 30px 22px 20px;
+}
+}
+
+@media (max-width: 400px) {
+  .resource-grid {
+    grid-template-columns: 1fr;
+}
+
+  .welcome-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 11px;
+}
+}

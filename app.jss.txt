@@ -92,3 +92,202 @@ Note: delivery late. say sorry. arrives Friday.</div>
 const lessonList = document.querySelector("#lessonList");
 const overlay = document.querySelector("#lessonOverlay");
 let activeLesson = 0;
+
+// Keep progress and notes in this browser for now.
+function readSaved(key, fallback) {
+  try {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : fallback;
+  } catch (error) {
+    return fallback;
+}
+}
+
+function saveSaved(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+} catch (error) {
+    // The page still works if this browser blocks local storage.
+}
+}
+
+const savedLessons = readSaved("voltron-learn-completed", []);
+let completed = Array.isArray(savedLessons)
+  ? savedLessons.filter(index => Number.isInteger(index) && index >= 0 && index < lessons.length)
+  : [];
+
+const savedComments = readSaved("voltron-learn-comments", []);
+let comments = Array.isArray(savedComments)
+  ? savedComments.filter(comment => comment && typeof comment.text === "string")
+  : [];
+
+function renderLessons() {
+  lessonList.innerHTML = "";
+
+  lessons.forEach((lesson, index) => {
+    const row = document.createElement("button");
+    row.className = completed.includes(index) ? "lesson-row completed" : "lesson-row";
+    row.type = "button";
+    row.dataset.lesson = index;
+
+    const number = document.createElement("span");
+    number.className = "lesson-number";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    const copy = document.createElement("span");
+    copy.className = "lesson-copy";
+
+    const title = document.createElement("strong");
+    title.textContent = lesson.title;
+
+    const subtitle = document.createElement("span");
+    subtitle.textContent = lesson.subtitle;
+    copy.append(title, subtitle);
+
+    const duration = document.createElement("span");
+    duration.className = "lesson-duration";
+    duration.textContent = `${lesson.time} min`;
+
+    const openLabel = document.createElement("span");
+    openLabel.className = "lesson-chevron";
+    openLabel.textContent = ">";
+
+    row.append(number, copy, duration, openLabel);
+    lessonList.appendChild(row);
+  });
+}
+
+function updateProgress() {
+  const percent = Math.round((completed.length / lessons.length) * 100);
+  document.querySelector("#progressPercent").textContent = `${percent}%`;
+  document.querySelector("#progressCount").textContent = `${completed.length} of ${lessons.length} lessons`;
+  document.querySelector("#progressBar").style.width = `${percent}%`;
+  document.querySelector("#sideProgressBar").style.width = `${percent}%`;
+  document.querySelector("#sideProgressText").textContent = `${percent}% done`;
+}
+
+function openLesson(index) {
+  activeLesson = index;
+  const lesson = lessons[index];
+
+  document.querySelector("#dialogKicker").textContent = `LESSON ${String(index + 1).padStart(2, "0")} - ${lesson.time} MIN`;
+  document.querySelector("#dialogTitle").textContent = lesson.title;
+
+  // This HTML is written above in the lesson data, not typed by learners.
+  document.querySelector("#dialogBody").innerHTML = lesson.body;
+  document.querySelector("#dialogIndex").textContent = `${index + 1} of ${lessons.length} - ${lesson.subtitle}`;
+  document.querySelector("#completeLesson").textContent = completed.includes(index)
+    ? "Already done"
+    : "Mark this one done";
+
+  overlay.classList.add("open");
+  overlay.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  document.querySelector("#closeLesson").focus();
+}
+
+function closeLesson() {
+  overlay.classList.remove("open");
+  overlay.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function renderComments() {
+  const list = document.querySelector("#commentList");
+  list.innerHTML = "";
+
+  comments.forEach(comment => {
+    const item = document.createElement("div");
+    item.className = "comment-item";
+
+    const avatar = document.createElement("div");
+    avatar.className = "comment-avatar";
+    avatar.textContent = "Y";
+
+    const content = document.createElement("div");
+    const text = document.createElement("p");
+    text.textContent = comment.text;
+
+    const date = document.createElement("small");
+    date.textContent = comment.date || "Saved note";
+
+    content.append(text, date);
+    item.append(avatar, content);
+    list.appendChild(item);
+  });
+}
+
+lessonList.addEventListener("click", event => {
+  const row = event.target.closest("[data-lesson]");
+  if (row) {
+    openLesson(Number(row.dataset.lesson));
+  }
+});
+
+document.querySelector("#startButton").addEventListener("click", () => {
+  const nextLesson = lessons.findIndex((lesson, index) => !completed.includes(index));
+  openLesson(nextLesson === -1 ? 0 : nextLesson);
+});
+
+document.querySelector("#closeLesson").addEventListener("click", closeLesson);
+
+overlay.addEventListener("click", event => {
+  if (event.target === overlay) {
+    closeLesson();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeLesson();
+  }
+});
+
+document.querySelector("#completeLesson").addEventListener("click", () => {
+  if (!completed.includes(activeLesson)) {
+    completed.push(activeLesson);
+  }
+
+  saveSaved("voltron-learn-completed", completed);
+  renderLessons();
+  updateProgress();
+  closeLesson();
+});
+
+// A blank note is just a blank note, so don't save it.
+document.querySelector("#postComment").addEventListener("click", () => {
+  const input = document.querySelector("#commentInput");
+  const text = input.value.trim();
+
+  if (!text) {
+    input.focus();
+    return;
+  }
+
+  const date = new Date().toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric"
+  });
+
+  comments.unshift({ text, date });
+  saveSaved("voltron-learn-comments", comments);
+  input.value = "";
+  renderComments();
+});
+
+document.querySelector("#menuToggle").addEventListener("click", () => {
+  const sidebar = document.querySelector("#sidebar");
+  const isOpen = sidebar.classList.toggle("open");
+  document.querySelector("#menuToggle").setAttribute("aria-expanded", String(isOpen));
+});
+
+document.querySelectorAll(".sidebar .nav-link").forEach(link => {
+  link.addEventListener("click", () => {
+    document.querySelector("#sidebar").classList.remove("open");
+    document.querySelector("#menuToggle").setAttribute("aria-expanded", "false");
+  });
+});
+
+renderLessons();
+updateProgress();
+renderComments();

@@ -1,0 +1,46 @@
+AI ENGINEERING BASICS - BATCH 01
+HOW AN AI FEATURE HANDLES A REQUEST
+
+The short version
+
+An AI feature is more than a model. The app around the model decides what
+job to give it, what useful information to include, and what to do with
+the result.
+
+A simple request flow
+
+1. A person asks a question or gives the app a task.
+2. The app prepares the request. It can add clear instructions and relevant
+   information that the model needs for this task.
+3. The model returns a possible answer or other output.
+4. The app can check, format, or route that output before showing it.
+
+A small example
+
+A visitor asks a shop website, "Can I bring my dog?"
+
+The app finds the shop's current pet policy and includes the relevant part
+with the question. The model can then draft an answer based on that context.
+If the policy cannot be found, the app should not ask the model to invent it.
+
+Keep these in mind
+
+- Instructions describe the task. Context supplies useful details.
+- Clear instructions and relevant context can help, but they do not guarantee
+  a correct answer.
+- A fluent answer is not proof that its facts are right.
+- Try examples that are confusing or incomplete, not just the easy demo.
+- Check important answers, especially when a mistake could affect a person.
+
+Tiny experiment
+
+Ask an AI tool the dog-policy question without providing a policy. Then giveit a short policy and ask again. Compare the two answers. Did the answerchange? Did either version make up a detail?
+
+Sources
+
+OpenAI, Optimizing LLM Accuracy:
+https://platform.openai.com/docs/guides/optimizing-llm-Accuracy
+OpenAI, Prompt Engineering:
+https://platform.openai.com/docs/guides/prompt-engineering
+
+Checked: 2026-10-30
